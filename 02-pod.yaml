@@ -1,0 +1,11 @@
+#POD is a smallest deployable unit in kuberenets. It can have multiple containers
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    purpose: demo
+spec:
+  containers:
+  - name: nginx
+    image: nginx
