@@ -1,0 +1,8 @@
+#Namespace its a isolated project space in k8's to create your workloads
+apiVersion: v1
+kind: Namespace
+metadata: 
+  name: roboshop
+  labels:
+    project: roboshop
+    environment: dev
