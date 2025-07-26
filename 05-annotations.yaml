@@ -1,0 +1,18 @@
+#Annotations are simiar like labels but this is used to provison exteranls resources to k8's. Like keeping Build url's
+# Image registry and etc., It can be 256 chars
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotations
+  labels:
+    project: roboshop
+    component: mysql
+    tier: backend
+    environment: dev
+  annotations:
+    description: "This pod is created to demonstrate pod annotations"
+    jenkins: "https://jenkins.com/build/job/roboshop-catalouge/3"
+spec:
+  containers:
+  - name: nginx
+    image: nginx

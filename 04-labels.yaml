@@ -1,0 +1,16 @@
+#Labels are used to select or identifying resources inside kubernetes. Ex: for selecting pods, filtering resources
+# Labels we can't keep long values only allowed 63 chars
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: labels
+  labels:
+    project: roboshop
+    component: mysql
+    tier: backend
+    environment: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx

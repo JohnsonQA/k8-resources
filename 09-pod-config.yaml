@@ -1,0 +1,12 @@
+#In Pod we are using the config map vars juz by passing name of the config map
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-configmap
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      envFrom:
+        - configMapRef:
+            name: pod-config

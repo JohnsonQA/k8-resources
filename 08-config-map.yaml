@@ -1,0 +1,13 @@
+#No so sensitive data. where we can store in configMap using env vars and then re-use this map in actual manifest files
+# For better re-usuablity of the varaibales
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pod-config
+  labels:
+    purpose: config
+    env: dev
+data:
+  COURSE: "DevOps with AWS"
+  DURATION: "120HRS"
+  TRAINER: "SIVAKUMAR REDDY M"

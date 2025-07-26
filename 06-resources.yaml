@@ -1,0 +1,18 @@
+#Limiting the resources and utilize it as per the limit. Horizontal scaling and vertical scaling. 
+#usualy we do horizontal scaling means if utilization is 100% then we create new pods and allocate the resources
+# Not increasing resources in the same server
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resources
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+      requests: # soft limit
+        memory: "68Mi"
+        cpu: "100m"
+      limits: # hard limit
+        memory: "128Mi"
+        cpu: "150m"
