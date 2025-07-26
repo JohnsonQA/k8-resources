@@ -1,0 +1,19 @@
+#As we know each pod can have multiple containers. so we can run multiple containers in one pod
+#using this command as almalinux is minimal base os image where it can't run constantly. so giving some sleep will run the image continuoulsy
+# why we need to run consistently cuz in k8's container starts and should running continulsy to make the pod up
+# So hence we use sleep to maintain the base image running
+
+appVersion: v1
+kind: Pod
+metadata:
+  name: multi-container
+  labels:
+    project: roboshop
+    purporse: multi-container-demo
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  - name: almalinux
+    image: almalinux:9
+    command: ["sleep", "1000"]
