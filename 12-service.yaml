@@ -1,0 +1,40 @@
+#Service is used to communicate between two pods. As IP address keeps changes when pods are restarted so is why we go for Service which is reliable
+# Based on labels and selector. Selector will tells to service to look for pod with these labels mentioned below
+# when someone access the service on port 80 it will route the traffic to pod's container on port 80 
+# In short service is like a load balancer which will forwards the tarrfice to the targetted pod containetr on mentioned port 
+
+
+# In POD block has nginx named being created and it has some labels which service selectors are looking for 
+# With the help of these lables service willl detect the pod and forwards the traffic
+
+
+# In short service in k8 is useful to communicate pod to pod, load balancing and expose the app to external world
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    purpose: service-demo
+spec:
+  selector:
+    purpose: service-demo
+    project: roboshop
+    environment: dev
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    purpose: service-demo
+    project: roboshop
+    environment: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx

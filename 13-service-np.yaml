@@ -1,0 +1,33 @@
+# Service-node port is used to communicate with external applications which are outside of the cluster. 
+# With the help of service node prot we can communicate pod to pod if pods are outside of cluster
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-np
+  labels:
+    purpose: service-np-demo
+spec:
+  type: NodePort
+  selector:
+    purpose: service-np-demo
+    project: roboshop
+    environment: dev
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-np
+  labels:
+    purpose: service-np-demo
+    project: roboshop
+    environment: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx
