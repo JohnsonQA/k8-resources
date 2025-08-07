@@ -1,0 +1,16 @@
+#Its a PV which helps us to mount the data. Its a k8 wrapper/api. 
+# Access Modes are explained detailed in Session 61 notes.
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ebs-static
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 20Gi
+  csi:
+    driver: ebs.csi.aws.com
+    fsType: ext4
+    volumeHandle: vol-07ffd1ead1f2adad1
