@@ -14,7 +14,8 @@
 #Workflow - What ever the data we save in usr/share/nginx/html it will first goes under PVC --> PV 
 #and store in EBS not inside ec2 node
 
-
+#IMP - If pod get deleted data still be there in volume. As we are using ebs PV and PVC. 
+#Once we create pod again data would be restored from EBS
 
 apiVersion: v1
 kind: PersistentVolume
