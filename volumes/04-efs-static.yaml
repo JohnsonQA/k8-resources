@@ -10,7 +10,7 @@ spec:
     storage: 5Gi
   volumeMode: Filesystem
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   storageClassName: "" #This should be empty for static provisioning
   persistentVolumeReclaimPolicy: Retain
   csi:
@@ -23,7 +23,7 @@ metadata:
   name: efs-static
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   storageClassName: ""
   resources:
     requests:
