@@ -41,15 +41,14 @@ spec:
   selector:
     matchLabels:
       purpose: statefulset
-      project: roboshop # has to match .spec.template.metadata.labels
+      project: roboshop # has to match with POD labels
   serviceName: "nginx-svc-headless" # this should be headless service
   replicas: 3 # by default is 1
   template:
     metadata:
       labels:
         purpose: statefulset
-        project: roboshop # has to match .spec.selector.matchLabels
-    spec:
+        project: roboshop # has to match with StatefulSet
       containers:
       - name: nginx
         image: nginx

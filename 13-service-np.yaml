@@ -1,6 +1,5 @@
-# Service-node port is used to communicate with external applications which are outside of the cluster. 
-# With the help of service node prot we can communicate pod to pod if pods are outside of cluster
-
+# Service-node port is used to expose application to outside world 
+# With the help of service node port we can expose it outised world
 
 apiVersion: v1
 kind: Service
