@@ -1,0 +1,23 @@
+#LivenessProbe checks container is alive or not
+#ReadinessProbe check wether my container ready to serve traffic
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: liveness-http
+spec:
+  containers:
+  - name: liveness
+    image: nginx
+    livenessProbe:
+      tcpSocket:
+        port: 80
+      initialDelaySeconds: 30 #It wait for 30 sec to check pod is up
+      periodSeconds: 10 #Every 10 seconds it checks the health
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 80
+      initialDelaySeconds: 40
+      periodSeconds: 3
